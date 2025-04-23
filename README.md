@@ -1,54 +1,56 @@
-# React + TypeScript + Vite
+# Org Hierarchy Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based organization hierarchy management system that allows you to visualize and manage your organization's structure.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Hire and manage organization owners
+- Hire and fire employees
+- Visualize organization hierarchy in a tree structure
+- Real-time updates with toast notifications
+- Interactive tree visualization with zoom and pan controls
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React + TypeScript
+- Vite
+- react-d3-tree for hierarchy visualization
+- Sonner for toast notifications
+- Tailwind CSS for styling
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies:
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3. Start the development server:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm run dev
 ```
+
+## API Endpoints
+
+The application connects to a backend server running at `http://localhost:8080/api` with the following endpoints:
+
+- `GET /toJson` - Fetch the current organization hierarchy
+- `POST /hireOwner` - Hire a new owner
+- `POST /hireEmployee` - Hire a new employee under a boss
+- `DELETE /fireEmployee/:id` - Fire an employee
+- `POST /reset` - Reset the organization structure
+
+## Usage
+
+1. **Hire Owner**: Enter the owner ID and click "Hire Owner"
+2. **Hire Employee**: Enter both employee ID and boss ID, then click "Hire Employee"
+3. **Fire Employee**: Enter employee ID and click "Fire Employee"
+4. **View Hierarchy**: Click "Get Hierarchy" to visualize the current structure
+5. **Reset**: Click "Reset Organization" to clear all data
+
+## Development
+
+This project uses Vite for development with HMR (Hot Module Replacement) support. The project structure follows standard React + TypeScript conventions with additional UI components from a custom component library.
