@@ -10,7 +10,7 @@ export interface TreeNode {
   children: TreeNode[];
 }
 
-const API = "http://localhost:8080/api";
+const API = "https://org-hierarchy-backend.onrender.com/api";
 
 async function fetchHierarchyData() {
   const res = await fetch(`${API}/toJson`, {
@@ -191,7 +191,7 @@ function App() {
     <main className="p-6 flex">
       {/* LEFT: Controls */}
       <div className="w-1/2 pr-6 space-y-6">
-        <h1 className="text-2xl font-bold">Org Hierarchy Manager</h1>
+        <h1 className="text-2xl font-bold">Organizational Manager</h1>
         <HireOwnerForm ownerId={ownerId} setOwnerId={setOwnerId} onHireOwner={handleHireOwner} />
         <HireEmployeeForm
           employeeId={employeeId}
